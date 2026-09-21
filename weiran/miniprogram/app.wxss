@@ -1,0 +1,95 @@
+/* 全局样式：纸质书页配色，简约克制 */
+page {
+  background: #f7f2e7;
+  color: #3b342a;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+view, text, button, input, textarea { box-sizing: border-box; }
+
+.serif { font-family: "Kaiti SC", "KaiTi", "STKaiti", "FangSong", serif; }
+
+.page { padding: 24rpx 28rpx 56rpx; }
+
+.card {
+  background: #fffdf8;
+  border: 1rpx solid #ece2d0;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(90, 70, 40, 0.04);
+}
+
+.section-title { font-size: 30rpx; font-weight: 600; color: #4a3f30; margin-bottom: 16rpx; }
+
+.muted { color: #9a8f7d; font-size: 24rpx; }
+.small { font-size: 24rpx; color: #8a8172; }
+.strong { font-weight: 600; color: #4a3f30; }
+
+.row { display: flex; flex-direction: row; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.between { display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.flex1 { flex: 1; }
+
+.badge { display: inline-block; padding: 4rpx 16rpx; border-radius: 999rpx; font-size: 22rpx; line-height: 1.5; }
+.badge-warn { background: #f7e4c4; color: #9a6410; }
+.badge-danger { background: #f6d8d4; color: #a33a2f; }
+.badge-info { background: #dcebf5; color: #2f6b8f; }
+.badge-ok { background: #dcead8; color: #3e6b3a; }
+.badge-neutral { background: #ece8df; color: #7a7060; }
+
+.tag { display: inline-block; padding: 6rpx 18rpx; margin: 0 12rpx 12rpx 0; background: #f3ecdd; color: #6b5c43; border-radius: 999rpx; font-size: 24rpx; }
+
+.btn {
+  border-radius: 999rpx;
+  font-size: 28rpx;
+  padding: 0 40rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+}
+.btn::after { border: none; }
+.btn-primary { background: #8a5a2b; color: #fffdf8; }
+.btn-ghost { background: #fffdf8; color: #8a5a2b; border: 1rpx solid #d9c9a8; }
+.btn-warn { background: #c47b2f; color: #fff; }
+.btn-danger { background: #b9533f; color: #fff; }
+.btn-disabled { background: #e6dfd2; color: #a99e8b; }
+
+.avatar {
+  width: 88rpx; height: 88rpx; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fffdf8; font-size: 40rpx; font-weight: 600;
+  background: #c9a86b;
+}
+.avatar-sm { width: 64rpx; height: 64rpx; font-size: 28rpx; }
+.avatar-lg { width: 132rpx; height: 132rpx; font-size: 56rpx; }
+.avatar-img { width: 100%; height: 100%; border-radius: 50%; }
+
+.divider { height: 1rpx; background: #efe8da; margin: 20rpx 0; }
+
+.empty { padding: 80rpx 0; text-align: center; color: #a99e8b; font-size: 26rpx; }
+
+.field { margin-bottom: 24rpx; }
+.field-label { font-size: 26rpx; color: #6b5c43; margin-bottom: 10rpx; }
+.input {
+  background: #fffdf8; border: 1rpx solid #e3d8c4; border-radius: 14rpx;
+  height: 88rpx; line-height: 88rpx; padding: 0 22rpx; font-size: 28rpx; width: 100%;
+}
+.textarea {
+  background: #fffdf8; border: 1rpx solid #e3d8c4; border-radius: 14rpx;
+  padding: 20rpx 22rpx; font-size: 28rpx; width: 100%; min-height: 180rpx; line-height: 1.6;
+}
+
+.switch-row { display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 24rpx 0; border-bottom: 1rpx solid #efe8da; }
+.switch-row:last-child { border-bottom: none; }
+
+.picker-box {
+  background: #fffdf8;
+  border: 1rpx solid #e3d8c4;
+  border-radius: 14rpx;
+  padding: 18rpx 22rpx;
+  font-size: 28rpx;
+  color: #4a3f30;
+}

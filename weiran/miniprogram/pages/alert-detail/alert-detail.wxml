@@ -1,0 +1,76 @@
+<view class="page">
+  <view wx:if="{{!hasWarning}}" class="empty">该学生当前无学业预警</view>
+
+  <block wx:else>
+    <view class="card">
+      <view class="between">
+        <view class="col">
+          <view class="section-title">学业预警详情</view>
+          <view class="small">{{student.name}}（{{student.nickname}}）</view>
+        </view>
+        <view class="badge {{cls}}">{{label}}</view>
+      </view>
+      <view class="value-block">
+        <view class="value-num">{{value}}</view>
+        <view class="small">当前预警值（0-100）</view>
+      </view>
+      <view class="small">预警原因：{{reason}}</view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">预警值变化趋势</view>
+      <view class="chart">
+        <view class="chart-bar-wrap" wx:for="{{trendBars}}" wx:key="label">
+          <view class="chart-value">{{item.value}}</view>
+          <view class="chart-bar" style="height:{{item.heightRpx}}rpx"></view>
+          <view class="chart-label">{{item.label}}</view>
+        </view>
+      </view>
+      <view class="small">首次提醒 {{firstNotifiedAt}} · 数值范围 0–100 · 越低表示关注程度越低</view>
+      <view class="escalation {{escalation ? 'on' : ''}}">{{escalationText}}</view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">选择处理方式</view>
+      <view class="small handle-tip">低等级学业预警会先推送给你本人，请选择你的处理方式。</view>
+      <view class="action-row">
+        <button class="btn btn-primary action-btn" bindtap="onSelf">自助处理</button>
+        <button class="btn btn-warn action-btn" bindtap="onHelp">请求辅导员帮助</button>
+        <button class="btn btn-ghost action-btn" bindtap="onIgnore">忽略</button>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">处理记录</view>
+      <view wx:if="{{actions.length == 0}}" class="empty">暂无处理记录</view>
+      <view class="action-item" wx:for="{{actions}}" wx:key="id">
+        <view class="between">
+          <view class="strong">{{item.action}}</view>
+          <view class="small">{{item.time}}</view>
+        </view>
+        <view class="small">{{item.note}}</view>
+      </view>
+    </view>
+
+    <view class="rule-tip small">演示规则：先提醒学生本人；观察期为 21 天，降幅不足 5% 时生成辅导员待处理事件。主动求助立即生成事件。辅导员服务尚未接入，不表示已发送微信消息。</view>
+  </block>
+
+  <view wx:if="{{canReplay}}" class="card demo-card">
+    <view class="section-title">预警流程演示</view>
+    <view class="small">模拟日期：{{demoDate}}。按钮只推进模拟日期，不修改真实时间；历史事件会保留。</view>
+    <view class="demo-buttons" wx:if="{{hasWarning}}">
+      <button class="btn btn-ghost" bindtap="onAdvanceFlat">7 天后 · 数值不变</button>
+      <button class="btn btn-ghost" bindtap="onAdvanceImproved">7 天后 · 下降 10 分</button>
+    </view>
+    <button class="btn btn-ghost replay-btn" bindtap="onReplay">重播首次提醒</button>
+  </view>
+
+  <view wx:if="{{events.length}}" class="card">
+    <view class="section-title">提醒流转记录</view>
+    <view class="action-item" wx:for="{{events}}" wx:key="id">
+      <view class="strong">{{item.recipient === 'student' ? '学生本人' : '辅导员待处理'}} · {{item.date}}</view>
+      <view class="small">{{item.reason}}</view>
+      <view class="small">{{item.status}}</view>
+    </view>
+  </view>
+</view>

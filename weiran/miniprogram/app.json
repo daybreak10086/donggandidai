@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/messages/messages",
+    "pages/message-detail/message-detail",
+    "pages/me/me",
+    "pages/profile/profile",
+    "pages/alert-detail/alert-detail",
+    "pages/feedback/feedback",
+    "pages/settings/settings",
+    "pages/settings/account/account",
+    "pages/settings/display/display",
+    "pages/settings/push/push",
+    "pages/settings/info/info",
+    "pages/ip/ip"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f7f2e7",
+    "navigationBarTitleText": "未然",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f2e7",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#8a8172",
+    "selectedColor": "#8a5a2b",
+    "backgroundColor": "#fbf7ee",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/messages/messages",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

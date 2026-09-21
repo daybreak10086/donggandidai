@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="card">
+    <view class="section-title">预警推送</view>
+    <view class="switch-row">
+      <view class="flex1">
+        <view class="strong">健康预警功能</view>
+        <view class="small">关闭后不再展示、不再推送健康预警通知</view>
+      </view>
+      <switch checked="{{settings.enableHealthAlert}}" bindchange="onToggleHealthAlert" color="#8a5a2b" />
+    </view>
+    <view class="switch-row">
+      <view class="flex1">
+        <view class="strong">情绪预警功能</view>
+        <view class="small">关闭后不再展示、不再推送情绪预警通知</view>
+      </view>
+      <switch checked="{{settings.enableEmotionAlert}}" bindchange="onToggleEmotionAlert" color="#8a5a2b" />
+    </view>
+  </view>
+</view>

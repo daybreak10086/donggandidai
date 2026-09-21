@@ -1,0 +1,136 @@
+:root {
+  --paper: #f7f2e7;
+  --card: #fffdf8;
+  --line: #ece2d0;
+  --ink: #3b342a;
+  --muted: #9a8f7d;
+  --accent: #8a5a2b;
+  --accent-dark: #6e461f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* 显式布局样式不能覆盖登录/主框架的隐藏状态。 */
+[hidden] { display: none !important; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.serif { font-family: "Kaiti SC", "KaiTi", "STKaiti", serif; }
+
+/* 登录页 */
+.login-view { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+
+.login-panel {
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 56px 48px;
+  box-shadow: 0 8px 32px rgba(90, 70, 40, 0.08);
+  width: 360px;
+}
+
+.brand { font-size: 56px; font-weight: 700; letter-spacing: 8px; }
+
+.brand-sub { color: var(--muted); margin: 8px 0 32px; font-size: 14px; }
+
+.login-btn {
+  background: var(--accent);
+  color: #fffdf8;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 40px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-btn:hover { background: var(--accent-dark); }
+
+.login-tip { margin-top: 20px; color: var(--muted); font-size: 12px; }
+
+/* 主框架 */
+.shell { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 220px;
+  background: #f0e7d6;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+}
+
+.logo { font-size: 28px; font-weight: 700; letter-spacing: 4px; text-align: center; }
+
+.logo-sub { text-align: center; color: var(--muted); font-size: 12px; margin-bottom: 24px; }
+
+.nav-item {
+  display: block;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.nav-item:hover { background: rgba(138, 90, 43, 0.08); }
+
+.nav-item.active { background: var(--accent); color: #fffdf8; }
+
+.sidebar-footer { margin-top: auto; font-size: 12px; color: var(--muted); text-align: center; }
+
+.main { flex: 1; display: flex; flex-direction: column; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-title { font-size: 18px; font-weight: 600; }
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.logout-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.content { padding: 28px; }
+
+.placeholder-card {
+  background: var(--card);
+  border: 1px dashed var(--line);
+  border-radius: 16px;
+  padding: 72px 32px;
+  text-align: center;
+}
+
+.placeholder-title { font-size: 20px; font-weight: 600; }
+
+.placeholder-hint { color: var(--muted); margin: 12px 0 28px; font-size: 14px; }
+
+.placeholder-empty {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #f3ecdd;
+  color: #9a8f7d;
+  font-size: 13px;
+}

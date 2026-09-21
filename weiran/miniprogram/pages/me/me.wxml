@@ -1,0 +1,17 @@
+<view class="page">
+  <view class="card profile-card">
+    <view class="avatar avatar-lg" style="background:{{student.avatarColor}}">
+      <image wx:if="{{avatarUrl}}" class="avatar-img" src="{{avatarUrl}}" mode="aspectFill" />
+      <block wx:else>{{student.avatarText}}</block>
+    </view>
+    <view class="me-nickname">{{nickname}}</view>
+    <view class="small me-sub">{{student.name}} · {{student.mbti}}</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">更多</view>
+    <view class="link-row" bindtap="goSettings"><view>设置中心</view><view class="arrow">›</view></view>
+    <view class="link-row" bindtap="goFeedback"><view>数据反馈</view><view class="arrow">›</view></view>
+    <view class="link-row" bindtap="goIp"><view>锅包肉 · 虚拟 IP</view><view class="arrow">›</view></view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="filter-tabs">
+    <view class="filter-tab {{active == item.key ? 'active' : ''}}" wx:for="{{tabs}}" wx:key="key" data-key="{{item.key}}" bindtap="onTab">{{item.label}}</view>
+  </view>
+
+  <view wx:if="{{messages.length == 0}}" class="empty">暂无相关通知</view>
+
+  <view class="msg-item" wx:for="{{messages}}" wx:key="id" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="onTapMessage">
+    <view class="between">
+      <view class="badge {{item.cls}}">{{item.label}}</view>
+      <view class="small">{{item.read ? '已读 · ' : ''}}{{item.time}}</view>
+    </view>
+    <view class="msg-title">{{item.title}}</view>
+    <view class="small">{{item.content}}</view>
+  </view>
+</view>

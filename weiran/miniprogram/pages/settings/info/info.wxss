@@ -1,0 +1,3 @@
+.info-head { display: flex; flex-direction: column; align-items: center; padding: 40rpx 28rpx; }
+
+.choose-avatar { margin-top: 24rpx; height: 64rpx; line-height: 64rpx; font-size: 24rpx; padding: 0 28rpx; }

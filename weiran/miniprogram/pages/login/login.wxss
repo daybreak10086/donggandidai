@@ -1,0 +1,31 @@
+.login-page { padding-top: 100rpx; }
+
+.brand { text-align: center; margin-bottom: 48rpx; }
+
+.brand-mark {
+  font-size: 96rpx;
+  font-weight: 700;
+  color: #4a3f30;
+  letter-spacing: 8rpx;
+}
+
+.brand-sub { margin-top: 12rpx; color: #9a8f7d; font-size: 26rpx; letter-spacing: 2rpx; }
+
+.login-btn { margin-top: 8rpx; }
+
+.demo-card { margin-top: 8rpx; }
+
+.demo-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14rpx 4rpx;
+  border-bottom: 1rpx solid #f0e9db;
+}
+
+.demo-line:last-child { border-bottom: none; }
+
+.demo-account { color: #8a8172; font-size: 26rpx; }
+
+.login-tip { margin-top: 32rpx; text-align: center; }

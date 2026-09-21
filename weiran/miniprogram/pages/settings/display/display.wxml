@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="card">
+    <view class="section-title">预警值显示</view>
+    <view class="switch-row">
+      <view class="flex1">
+        <view class="strong">身体健康预警值显示</view>
+        <view class="small">关闭后，首页画像卡片隐藏“身体健康”模块</view>
+      </view>
+      <switch checked="{{settings.showHealth}}" bindchange="onToggleShowHealth" color="#8a5a2b" />
+    </view>
+    <view class="switch-row">
+      <view class="flex1">
+        <view class="strong">心理健康预警值显示</view>
+        <view class="small">关闭后，首页画像卡片隐藏“心理健康”模块</view>
+      </view>
+      <switch checked="{{settings.showMental}}" bindchange="onToggleShowMental" color="#8a5a2b" />
+    </view>
+  </view>
+</view>

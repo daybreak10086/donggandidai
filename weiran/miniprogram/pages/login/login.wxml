@@ -1,0 +1,36 @@
+<view class="page login-page">
+  <view class="brand">
+    <view class="brand-mark serif">未然</view>
+    <view class="brand-sub">高校学生画像与预警平台</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">体验未然</view>
+    <view class="field">
+      <view class="field-label">选择演示学生</view>
+      <picker range="{{students}}" range-key="name" value="{{studentIndex}}" bindchange="onStudentChange">
+        <view class="picker-box">{{students[studentIndex].name}} · {{students[studentIndex].account}} ›</view>
+      </picker>
+    </view>
+    <button class="btn btn-primary login-btn" bindtap="onWechatLogin" loading="{{loggingIn}}" disabled="{{loggingIn}}">微信登录体验</button>
+    <button class="btn btn-ghost login-btn" bindtap="onDemoLogin" disabled="{{loggingIn}}">本地模拟登录</button>
+    <view class="small">使用所选模拟学生身份。微信入口调用登录接口，尚未接入学校身份认证；测试号不可用时可选本地登录。</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">账号登录</view>
+    <view class="field">
+      <view class="field-label">账号</view>
+      <input class="input" value="{{account}}" bindinput="onAccountInput" placeholder="请输入学号 / 账号" />
+    </view>
+    <view class="field">
+      <view class="field-label">密码</view>
+      <input class="input" value="{{password}}" bindinput="onPasswordInput" password placeholder="请输入密码" />
+    </view>
+    <button class="btn btn-primary login-btn" bindtap="onLogin" disabled="{{loggingIn}}">
+      {{loggingIn ? '正在登录…' : '登录'}}
+    </button>
+  </view>
+
+  <view class="login-tip muted">初始演示账号 20230001–20230006，初始密码均为 123456。本次体验的数据只保存在本机。</view>
+</view>

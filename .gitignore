@@ -1,0 +1,15 @@
+# 本机文件与修复前备份
+_backups/
+_publish/
+*.zip
+**/project.private.config.json
+.DS_Store
+Thumbs.db
+
+# 依赖、缓存和本地环境变量
+node_modules/
+coverage/
+*.log
+.env
+.env.*
+!.env.example

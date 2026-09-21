@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="settings-head">
+    <view class="settings-title">设置</view>
+    <view class="small">选择分类进入具体设置项</view>
+  </view>
+
+  <view class="card">
+    <view class="category-row" wx:for="{{categories}}" wx:key="key" data-key="{{item.key}}" bindtap="goCategory">
+      <view class="flex1">
+        <view class="strong">{{item.title}}</view>
+        <view class="small">{{item.desc}}</view>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <button class="btn btn-ghost logout-btn" bindtap="onLogout">退出登录</button>
+  </view>
+</view>

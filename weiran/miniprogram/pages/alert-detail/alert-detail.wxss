@@ -1,0 +1,32 @@
+.value-block { text-align: center; margin: 20rpx 0; }
+
+.value-num { font-size: 88rpx; font-weight: 700; color: #8a5a2b; line-height: 1.1; }
+
+.chart { display: flex; flex-direction: row; align-items: flex-end; height: 240rpx; padding: 10rpx 0; }
+
+.chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+
+.chart-bar { width: 32rpx; background: #c9a86b; border-radius: 8rpx 8rpx 0 0; min-height: 8rpx; }
+
+.chart-value { font-size: 22rpx; color: #8a8172; margin-bottom: 4rpx; }
+
+.chart-label { font-size: 20rpx; color: #9a8f7d; margin-top: 6rpx; }
+
+.escalation { margin-top: 16rpx; font-size: 24rpx; color: #9a8f7d; }
+.escalation.on { color: #a33a2f; }
+
+.handle-tip { margin-bottom: 16rpx; }
+
+.action-row { display: flex; flex-direction: column; }
+
+.action-btn { width: 100%; margin: 0 0 16rpx; font-size: 28rpx; padding: 0 8rpx; }
+.action-btn:last-child { margin-right: 0; }
+
+.action-item { padding: 16rpx 0; border-bottom: 1rpx solid #f0e9db; }
+.action-item:last-child { border-bottom: none; }
+
+.rule-tip { margin-top: 8rpx; color: #9a8f7d; }
+
+.demo-card { margin-top: 24rpx; }
+.demo-buttons .btn, .replay-btn { margin-top: 16rpx; }
+.chart-bar { flex-shrink: 0; }

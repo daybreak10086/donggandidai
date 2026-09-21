@@ -1,0 +1,17 @@
+.settings-head { padding: 8rpx 4rpx 24rpx; }
+
+.settings-title { font-size: 40rpx; font-weight: 700; color: #4a3f30; margin-bottom: 4rpx; }
+
+.category-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 24rpx 4rpx;
+  border-bottom: 1rpx solid #f0e9db;
+}
+
+.category-row:last-child { border-bottom: none; }
+
+.arrow { color: #c2b69e; font-size: 40rpx; padding-left: 12rpx; }
+
+.logout-btn { color: #a33a2f; border-color: #e3c6c0; }

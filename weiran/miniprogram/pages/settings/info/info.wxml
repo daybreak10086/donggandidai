@@ -1,0 +1,17 @@
+<view class="page">
+  <view class="card info-head">
+    <view class="avatar avatar-lg" style="background:{{student.avatarColor}}">
+      <image wx:if="{{avatarUrl}}" class="avatar-img" src="{{avatarUrl}}" mode="aspectFill" />
+      <block wx:else>{{student.avatarText}}</block>
+    </view>
+    <button class="btn btn-ghost choose-avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" loading="{{savingAvatar}}" disabled="{{savingAvatar}}">更换头像</button>
+  </view>
+
+  <view class="card">
+    <view class="field">
+      <view class="field-label">昵称</view>
+      <input class="input" type="nickname" maxlength="20" value="{{nickname}}" bindinput="onNicknameInput" bindblur="onNicknameInput" placeholder="请输入昵称（最多 20 字）" />
+    </view>
+    <button class="btn btn-primary" bindtap="onSaveNickname">保存昵称</button>
+  </view>
+</view>

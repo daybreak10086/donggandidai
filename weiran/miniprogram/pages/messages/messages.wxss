@@ -1,0 +1,23 @@
+.filter-tabs { display: flex; flex-direction: row; flex-wrap: wrap; margin-bottom: 20rpx; }
+
+.filter-tab {
+  padding: 10rpx 26rpx;
+  margin: 0 16rpx 14rpx 0;
+  border-radius: 999rpx;
+  background: #fffdf8;
+  border: 1rpx solid #ece2d0;
+  color: #6b5c43;
+  font-size: 24rpx;
+}
+
+.filter-tab.active { background: #8a5a2b; color: #fffdf8; border-color: #8a5a2b; }
+
+.msg-item {
+  background: #fffdf8;
+  border: 1rpx solid #ece2d0;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.msg-title { font-size: 30rpx; font-weight: 600; color: #4a3f30; margin: 10rpx 0 4rpx; }

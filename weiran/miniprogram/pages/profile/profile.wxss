@@ -1,0 +1,15 @@
+.profile-head { display: flex; flex-direction: row; align-items: center; padding: 16rpx 4rpx 28rpx; }
+
+.ph-meta { margin-left: 24rpx; }
+
+.pname { font-size: 36rpx; font-weight: 700; color: #4a3f30; }
+
+.dim-head { margin-bottom: 8rpx; }
+
+.dim-title { font-size: 32rpx; font-weight: 700; color: #4a3f30; }
+
+.dim-item { padding: 18rpx 0; border-bottom: 1rpx solid #f0e9db; }
+
+.dim-item:last-child { border-bottom: none; }
+
+.field-value { font-size: 30rpx; font-weight: 600; color: #8a5a2b; }

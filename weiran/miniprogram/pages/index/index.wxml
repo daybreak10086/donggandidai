@@ -1,0 +1,120 @@
+<view class="page">
+  <view class="topbar">
+    <view class="brand-name serif">未然</view>
+    <view class="ip-entry" bindtap="goIp">
+      <text class="ip-entry-icon">🍥</text>
+      <text>和锅包肉聊聊</text>
+    </view>
+  </view>
+
+  <picker range="{{demoStudents}}" range-key="name" value="{{demoStudentIndex}}" bindchange="onDemoStudentChange">
+    <view class="picker-box demo-picker">模拟数据 · 当前为 {{student.name}} · 切换演示学生 ›</view>
+  </picker>
+
+  <view class="card hero-card">
+    <view class="between">
+      <view>
+        <view class="hello">你好，{{student.nickname}}</view>
+        <view class="muted">今天也要照顾好自己</view>
+      </view>
+      <view class="avatar" style="background:{{student.avatarColor}}">
+        <image wx:if="{{student.avatarUrl}}" class="avatar-img" src="{{student.avatarUrl}}" mode="aspectFill" />
+        <block wx:else>{{student.avatarText}}</block>
+      </view>
+    </view>
+
+    <view wx:if="{{hasAcademic}}" class="academic-banner" bindtap="goAlert">
+      <view class="between">
+        <view class="col">
+          <view class="banner-title">学业预警</view>
+          <view class="banner-sub">{{academicLabel}} · 当前预警值 {{academicValue}}</view>
+        </view>
+        <view class="banner-delta {{academicDeltaClass}}">{{academicDeltaText}}</view>
+      </view>
+      <view class="banner-action">查看详情与处理 ›</view>
+    </view>
+  </view>
+
+  <view class="section-title">我的画像</view>
+
+  <view class="card learn-card" bindtap="goProfile">
+    <view class="between">
+      <view class="col">
+        <view class="learn-title">学习状态</view>
+        <view class="muted">画像优先级 · 核心</view>
+      </view>
+      <view class="badge {{hasAcademic ? academicClass : 'badge-ok'}}">{{hasAcademic ? academicLabel : '状态良好'}}</view>
+    </view>
+    <view class="learn-grid">
+      <view class="learn-cell">
+        <view class="learn-num">{{learn.attendanceRateText}}</view>
+        <view class="small">课堂出勤率</view>
+      </view>
+      <view class="learn-cell">
+        <view class="learn-num">{{learn.homeworkText}}</view>
+        <view class="small">作业提交</view>
+      </view>
+      <view class="learn-cell">
+        <view class="learn-num">{{learn.quizScore}}</view>
+        <view class="small">小测 / 期中</view>
+      </view>
+    </view>
+    <view class="learn-tags">
+      <text class="tag">作业等级 {{learn.homeworkGrade}}</text>
+      <text class="tag">期末月进馆 {{learn.libraryVisitsFinalMonth}} 次</text>
+    </view>
+  </view>
+
+  <view wx:if="{{healthVisible}}" class="card">
+    <view class="between">
+      <view class="section-title">身体健康</view>
+      <view class="badge {{healthClass}}">{{healthLabel}}</view>
+    </view>
+    <view class="kv">
+      <view class="kv-item">
+        <view class="kv-num">{{student.health.exerciseDaysPerWeek}} 天</view>
+        <view class="small">一周运动天数</view>
+      </view>
+      <view class="kv-item">
+        <view class="kv-num">{{student.health.exerciseMinutes}} 分钟</view>
+        <view class="small">每次运动时长</view>
+      </view>
+      <view class="kv-item">
+        <view class="kv-num">{{student.health.libraryStayHours}} 小时</view>
+        <view class="small">图书馆日时长</view>
+      </view>
+    </view>
+    <view class="small">身体不适：{{healthSymptoms}}</view>
+  </view>
+
+  <view wx:if="{{mentalVisible}}" class="card">
+    <view class="between">
+      <view class="section-title">心理健康</view>
+      <view class="badge {{emotionClass}}">{{emotionLabel}}</view>
+    </view>
+    <view class="kv">
+      <view class="kv-item">
+        <view class="kv-num">{{student.mental.questionnaireScore}} 分</view>
+        <view class="small">压力自评分（0–20）</view>
+      </view>
+      <view class="kv-item">
+        <view class="kv-num">{{student.mental.dormInOutTimes}} 次</view>
+        <view class="small">近 7 天出入寝室</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="between">
+      <view class="section-title">性格与兴趣</view>
+      <picker mode="selector" range="{{mbtiOptions}}" value="{{mbtiIndex}}" bindchange="onMbtiChange">
+        <view class="edit-btn">修改</view>
+      </picker>
+    </view>
+    <view class="mb">MBTI：<text class="strong">{{student.mbti}}</text></view>
+    <view class="small">感兴趣的研究方向</view>
+    <view class="tag-row">
+      <text class="tag" wx:for="{{student.researchInterests}}" wx:key="*this">{{item}}</text>
+    </view>
+  </view>
+</view>

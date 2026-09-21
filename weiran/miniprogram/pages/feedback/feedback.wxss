@@ -1,0 +1,11 @@
+.picker-box {
+  background: #fffdf8;
+  border: 1rpx solid #e3d8c4;
+  border-radius: 14rpx;
+  padding: 18rpx 22rpx;
+  font-size: 28rpx;
+  color: #4a3f30;
+}
+
+.fb-item { padding: 18rpx 0; border-bottom: 1rpx solid #f0e9db; }
+.fb-item:last-child { border-bottom: none; }

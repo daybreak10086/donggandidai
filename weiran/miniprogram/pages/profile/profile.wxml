@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="profile-head">
+    <view class="avatar avatar-lg" style="background:{{student.avatarColor}}">
+      <image wx:if="{{student.avatarUrl}}" class="avatar-img" src="{{student.avatarUrl}}" mode="aspectFill" />
+      <block wx:else>{{student.avatarText}}</block>
+    </view>
+    <view class="col ph-meta">
+      <view class="pname">{{student.name}}（{{student.nickname}}）</view>
+      <view class="small">{{student.mbti}} · {{student.researchInterests[0]}}</view>
+    </view>
+  </view>
+
+  <view class="card" wx:for="{{dimensions}}" wx:key="key">
+    <view class="between dim-head">
+      <view class="dim-title">{{item.title}}</view>
+      <view class="badge {{item.priority == '核心' ? 'badge-warn' : 'badge-neutral'}}">{{item.priority}}</view>
+    </view>
+    <view class="dim-item" wx:for="{{item.items}}" wx:for-item="field" wx:key="label">
+      <view class="between">
+        <view class="strong">{{field.label}}</view>
+        <view class="field-value">{{field.value}}</view>
+      </view>
+      <view class="small">来源：{{field.source}}</view>
+      <view class="small">用途：{{field.purpose}}</view>
+    </view>
+  </view>
+
+  <view class="empty">提示：可在“设置”中关闭身体健康 / 心理健康模块的显示。</view>
+</view>

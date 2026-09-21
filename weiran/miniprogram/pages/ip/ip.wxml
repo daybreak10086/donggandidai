@@ -1,0 +1,23 @@
+<view class="page ip-page">
+  <view class="ip-avatar">🍥</view>
+  <view class="ip-name serif">锅包肉</view>
+  <view class="ip-desc muted">你的专属虚拟 IP 伙伴</view>
+
+  <view class="card">
+    <view class="section-title">对话主题</view>
+    <view class="theme-grid">
+      <view class="theme-item" wx:for="{{themes}}" wx:key="key" data-label="{{item.label}}" bindtap="onTheme">
+        <view class="theme-icon">{{item.icon}}</view>
+        <view>{{item.label}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">对话</view>
+    <view class="chat-placeholder">
+      <view class="bubble bot">你好呀，我是锅包肉～ 真正的对话能力正在开发中，敬请期待。</view>
+    </view>
+    <view class="fake-input">输入消息…（功能开发中）</view>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+.profile-card { display: flex; flex-direction: column; align-items: center; padding: 40rpx 28rpx; }
+
+.me-nickname { margin-top: 20rpx; font-size: 36rpx; font-weight: 600; color: #4a3f30; }
+
+.me-sub { margin-top: 8rpx; }
+
+.link-row { display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 22rpx 0; border-bottom: 1rpx solid #f0e9db; }
+.link-row:last-child { border-bottom: none; }
+
+.arrow { color: #c2b69e; font-size: 36rpx; }

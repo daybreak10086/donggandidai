@@ -1,0 +1,3 @@
+.message-title { font-size: 34rpx; font-weight: 600; margin: 24rpx 0 12rpx; }
+.message-content { line-height: 1.9; }
+.feedback-button { margin-top: 24rpx; }

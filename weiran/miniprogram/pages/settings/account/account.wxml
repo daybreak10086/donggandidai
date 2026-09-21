@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="card">
+    <view class="section-title">账号与安全</view>
+    <view class="small sub-tip">当前账号：{{accountInfo.account}}</view>
+    <view class="field">
+      <view class="field-label">新账号</view>
+      <input class="input" value="{{newAccount}}" bindinput="onNewAccountInput" placeholder="请输入新账号" />
+    </view>
+    <view class="field">
+      <view class="field-label">新密码</view>
+      <input class="input" value="{{newPassword}}" bindinput="onNewPasswordInput" password placeholder="请输入新密码" />
+    </view>
+    <button class="btn btn-primary" bindtap="onSave">保存账号与密码</button>
+  </view>
+</view>

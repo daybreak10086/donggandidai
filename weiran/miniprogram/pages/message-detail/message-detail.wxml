@@ -1,0 +1,20 @@
+<view class="page">
+  <view wx:if="{{!message}}" class="empty">这条消息不存在，或已按你的设置隐藏。</view>
+  <block wx:else>
+    <view class="card">
+      <view class="badge badge-neutral">{{label}} · 模拟消息</view>
+      <view class="message-title">{{message.title}}</view>
+      <view class="small">{{message.time}}</view>
+      <view class="divider"></view>
+      <view class="message-content">{{message.content}}</view>
+    </view>
+    <view wx:if="{{isRecommendation}}" class="card">
+      <view class="section-title">关于这条推荐</view>
+      <view class="small">当前为演示资源，未接入实际报名、课程或导师信息。此处用于展示推荐内容。</view>
+    </view>
+    <view wx:else class="card">
+      <view class="small">提醒基于本地模拟数据。数据有误时，可以提交反馈说明具体情况。</view>
+      <button class="btn btn-ghost feedback-button" bindtap="goFeedback">反馈数据问题</button>
+    </view>
+  </block>
+</view>
