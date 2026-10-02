@@ -1,0 +1,53 @@
+<view class="page growth-page">
+  <view class="growth-heading">
+    <view class="growth-kicker">未然 · 行动</view>
+    <view class="growth-title serif">一周改善计划</view>
+    <view class="growth-lead">为 {{studentName}} 留出一周，把目标拆成几件能完成的小事。</view>
+  </view>
+  <view class="growth-clock">
+    <view><view class="growth-clock-date">模拟日期 {{today}}</view><view class="growth-clock-note">推进日期不会自动改变成绩或填入记录</view></view>
+    <button class="growth-clock-btn" bindtap="advanceDay">推进一天</button>
+  </view>
+
+  <view class="card plan-draft" wx:if="{{draftVisible}}">
+    <view class="growth-section-top"><view class="section-title">{{sourceWarningId ? '从本次学业提醒开始' : '拟定一周计划'}}</view><view class="badge badge-neutral">待确认</view></view>
+    <view class="growth-helper">{{draftReason}}</view>
+    <view class="field growth-top-space"><view class="field-label">计划名称</view><input class="input" value="{{draftTitle}}" maxlength="50" placeholder="例如：把本周学习安排落实" bindinput="onTitleInput" /></view>
+    <view class="draft-task" wx:for="{{draftTasks}}" wx:key="key">
+      <view class="growth-section-top"><view class="field-label">行动 {{index + 1}}</view><button wx:if="{{draftTasks.length > 1}}" class="growth-text-btn" data-index="{{index}}" bindtap="removeDraftTask">移除</button></view>
+      <input class="input" value="{{item.title}}" maxlength="80" placeholder="写清要做的事，尽量具体" data-index="{{index}}" bindinput="onTaskTitleInput" />
+      <picker mode="date" value="{{item.dueDate}}" start="{{today}}" end="{{initialPlanEndDate}}" data-index="{{index}}" bindchange="onTaskDueChange"><view class="draft-deadline">完成期限 <text class="strong">{{item.dueDate}}</text><text>更改 ›</text></view></picker>
+    </view>
+    <button wx:if="{{draftTasks.length < 8}}" class="growth-text-btn add-task" bindtap="addDraftTask">＋ 添加一项行动</button>
+    <view class="growth-helper">确认后才计入统计。同一次学业提醒或同一周的个人计划会保留已有计划，避免重复。</view>
+    <view class="growth-actions"><button class="btn btn-primary" loading="{{saving}}" disabled="{{saving}}" bindtap="createPlan">确认并开始</button><button wx:if="{{plans.length}}" class="btn btn-ghost" bindtap="closeDraft">收起草稿</button></view>
+  </view>
+
+  <view class="growth-section-top" wx:if="{{!draftVisible}}"><view class="section-title">我的计划</view><button class="growth-text-btn" bindtap="openDraft">拟定计划 ＋</button></view>
+  <view wx:for="{{plans}}" wx:for-item="plan" wx:key="id" class="card">
+    <view class="section-title">{{plan.title}}</view>
+    <view class="growth-period">{{plan.startDate}} — {{plan.endDate}} · {{plan.sourceWarningId ? '来自学业提醒' : '自主计划'}}</view>
+    <view class="growth-grid">
+      <view class="growth-stat"><view class="growth-number">{{plan.completionText}}</view><view class="growth-label">完成率</view></view>
+      <view class="growth-stat"><view class="growth-number">{{plan.onTimeText}}</view><view class="growth-label">按原期限完成</view></view>
+      <view class="growth-stat"><view class="growth-number">{{plan.pendingCount}}</view><view class="growth-label">待完成</view></view>
+    </view>
+    <view class="growth-helper growth-top-space">已完成 {{plan.stats.completed}} 项 · 已取消 {{plan.stats.canceled}} 项 · 已逾期 {{plan.stats.overdue}} 项</view>
+    <view class="plan-task" wx:for="{{plan.tasks}}" wx:for-item="task" wx:key="id">
+      <view class="growth-section-top"><view class="task-title {{task.status == 'canceled' ? 'task-canceled' : ''}}">{{task.title}}</view><view class="badge {{task.status == 'completed' ? 'badge-ok' : task.status == 'canceled' ? 'badge-neutral' : task.overdueDays > 0 ? 'badge-warn' : 'badge-info'}}">{{task.statusLabel}}</view></view>
+      <view class="growth-helper">期限 {{task.dueDate}}<text wx:if="{{task.overdueDays > 0}}" class="growth-warning-text"> · 逾期 {{task.overdueDays}} 天</text></view>
+      <view class="growth-helper" wx:if="{{task.originalDueDate != task.dueDate}}">原期限 {{task.originalDueDate}} · 按时率仍以原期限计算</view>
+      <view class="growth-helper" wx:if="{{task.status == 'completed'}}">完成于 {{task.completedDate}}</view>
+      <view class="task-buttons" wx:if="{{task.status == 'pending'}}"><button class="growth-small-btn primary" data-plan="{{plan.id}}" data-task="{{task.id}}" bindtap="completeTask">完成</button><button class="growth-small-btn" data-plan="{{plan.id}}" data-task="{{task.id}}" bindtap="openPostpone">延期</button><button class="growth-small-btn quiet" data-plan="{{plan.id}}" data-task="{{task.id}}" bindtap="cancelTask">取消任务</button></view>
+      <view class="postpone-form" wx:if="{{postpone && postpone.planId == plan.id && postpone.taskId == task.id}}">
+        <view class="growth-subhead">调整这项行动的期限</view>
+        <picker mode="date" value="{{postpone.dueDate}}" start="{{postpone.earliestDate}}" end="{{latestPlanDate}}" bindchange="onPostponeDateChange"><view class="picker-box">新期限 {{postpone.dueDate}} ›</view></picker>
+        <textarea class="textarea postpone-reason" maxlength="200" placeholder="为什么需要调整？记录原因，方便复盘。" value="{{postpone.reason}}" bindinput="onPostponeReasonInput" />
+        <view class="task-buttons"><button class="growth-small-btn primary" bindtap="savePostpone">保存调整</button><button class="growth-small-btn quiet" bindtap="closePostpone">暂不调整</button></view>
+      </view>
+      <view class="task-log" wx:if="{{task.logs.length}}"><view class="task-log-item" wx:for="{{task.logs}}" wx:for-item="log" wx:key="key"><view>{{log.date}} · {{log.label}}</view><view wx:if="{{log.detail}}">{{log.detail}}</view><view wx:if="{{log.reason}}">原因：{{log.reason}}</view></view></view>
+    </view>
+  </view>
+  <view class="growth-footnote">取消项不计入完成率。到原定期限的任务才计入按时率；没有可统计任务时显示“—”。这些进展用于复盘，不自动修改学业预警值。</view>
+  <view class="growth-link-row"><button class="btn btn-ghost" bindtap="goCheckIn">写一条记录</button><button class="btn btn-ghost" bindtap="goReport">查看成长周报</button></view>
+</view>

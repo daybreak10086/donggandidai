@@ -1,0 +1,38 @@
+<view class="page growth-page" wx:if="{{report}}">
+  <view class="growth-heading"><view class="growth-kicker">未然 · 回顾</view><view class="growth-title serif">成长周报</view><view class="growth-lead">{{studentName}}的近 7 天。根据已有记录回顾变化，再安排下一步行动。</view></view>
+  <view class="growth-clock"><view><view class="growth-clock-date">模拟日期 {{today}}</view><view class="growth-clock-note">推进日期不会自动改变成绩或填入记录</view></view><button class="growth-clock-btn" bindtap="advanceDay">推进一天</button></view>
+  <view class="card report-overview status-{{report.status.key}}">
+    <view class="report-period-title">{{report.period.label}}</view><view class="report-status serif">{{report.status.label}}</view>
+    <view class="growth-lead">{{report.status.description}}</view>
+    <view class="report-periods"><view>本期 {{report.period.from}} — {{report.period.to}}</view><view>对比 {{report.period.previousFrom}} — {{report.period.previousTo}}</view></view>
+    <view class="growth-helper">整体变化依据可比的出勤、作业明细，个人记录与计划进展供复盘参考。</view>
+  </view>
+
+  <view class="growth-section-top"><view class="section-title">学习与行动</view><view class="badge badge-neutral">核心关注</view></view>
+  <view class="card metric-card tone-{{item.tone}}" wx:for="{{report.academic}}" wx:key="key">
+    <view class="metric-title">{{item.label}}</view><view class="metric-value">{{item.valueText}}</view><view class="metric-detail">{{item.detail}}</view>
+    <view class="metric-change">{{item.changeText}}</view><view class="growth-helper">{{item.previousText}}</view><view class="metric-source">来源：{{item.source}}</view>
+    <view class="metric-formula" wx:if="{{methodsVisible}}">计算方式：{{item.formula}}</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">每天的自主学习记录</view><view class="growth-helper">单位：分钟。柱高只表示时长，不评价学习效果。</view>
+    <view class="study-chart">
+      <view class="study-day" wx:for="{{report.studyBars}}" wx:key="date">
+        <view class="study-value">{{item.isMissing ? '未填' : item.value}}</view><view class="study-track"><view wx:if="{{!item.isMissing}}" class="study-bar {{item.value == 0 ? 'study-zero' : ''}}" style="height: {{item.height}}%;"></view><view wx:else class="study-missing"></view></view><view class="study-date">{{item.label}}</view>
+      </view>
+    </view>
+    <view class="report-coverage"><view class="between"><view class="strong">{{report.coverage.label}}</view><view class="coverage-count">{{report.coverage.days}} / {{report.coverage.expected}} 天</view></view><view class="coverage-track"><view class="coverage-fill" style="width: {{report.coverage.percent || 0}}%;"></view></view></view>
+    <view class="growth-helper">覆盖率只统计当前可见字段中至少填写一项的日期；未填写不会记成 0。两期记录分别达到 4 天，才比较自主记录的日均值。</view>
+  </view>
+
+  <block wx:if="{{report.wellbeing.length}}">
+    <view class="section-title">生活与感受</view>
+    <view class="card metric-card tone-{{item.tone}}" wx:for="{{report.wellbeing}}" wx:key="key"><view class="metric-title">{{item.label}}</view><view class="metric-value wellbeing-value">{{item.valueText}}</view><view class="metric-detail">{{item.detail}}</view><view class="metric-change">{{item.changeText}}</view><view class="growth-helper">{{item.previousText}}</view><view class="metric-source">来源：{{item.source}}</view><view class="metric-formula" wx:if="{{methodsVisible}}">计算方式：{{item.formula}}</view></view>
+  </block>
+
+  <view class="card" wx:if="{{report.advice.length}}"><view class="section-title">下周，可以从这里开始</view><view class="advice-row" wx:for="{{report.advice}}" wx:key="*this"><view class="advice-index">{{index + 1}}</view><view class="advice-content">{{item}}</view></view><view class="growth-actions"><button class="btn btn-primary" bindtap="goPlan">查看我的计划</button><button class="btn btn-ghost" bindtap="goCheckIn">补充自主记录</button></view></view>
+
+  <view class="card report-methods"><button class="method-toggle" bindtap="toggleMethods"><view class="strong">数据从哪里来，怎样计算</view><view class="small">{{methodsVisible ? '收起 −' : '展开 ＋'}}</view></button><view class="growth-helper">{{report.sourceLabel}}</view><view wx:if="{{methodsVisible}}"><view class="method-item" wx:for="{{report.methods}}" wx:key="title"><view class="method-title">{{item.title}}</view><view class="growth-helper">{{item.formula}}</view></view></view></view>
+  <view class="growth-footnote">周报是个人复盘工具。数据不足时保留“暂不可比”，不会自动修改学业预警值。</view>
+</view>

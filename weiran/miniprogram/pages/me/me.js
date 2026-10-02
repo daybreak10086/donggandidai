@@ -9,6 +9,9 @@ definePage({
     this.setData({ student: student, nickname: student.nickname, avatarUrl: student.avatarUrl })
   },
   goSettings: function () { wx.navigateTo({ url: '/pages/settings/settings' }) },
+  goPlan: function () { wx.navigateTo({ url: '/pages/plan/plan' }) },
+  goCheckIn: function () { wx.navigateTo({ url: '/pages/check-in/check-in' }) },
+  goWeeklyReport: function () { wx.navigateTo({ url: '/pages/weekly-report/weekly-report' }) },
   goFeedback: function () { wx.navigateTo({ url: '/pages/feedback/feedback' }) },
   goIp: function () { wx.navigateTo({ url: '/pages/ip/ip' }) }
 })

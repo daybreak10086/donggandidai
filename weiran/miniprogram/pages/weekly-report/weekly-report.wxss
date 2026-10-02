@@ -1,0 +1,43 @@
+@import "../../styles/growth.wxss";
+.report-overview { background: #efe7d5; border-top: 6rpx solid #a88a5a; }
+.report-period-title { color: #92784e; font-size: 24rpx; letter-spacing: 2rpx; }
+.report-status { font-size: 46rpx; line-height: 1.4; margin: 12rpx 0 14rpx; color: #73532b; }
+.status-improving { background: #edf0e4; border-top-color: #7d8c5d; }
+.status-improving .report-status { color: #587146; }
+.status-declining { background: #f6e9d6; border-top-color: #bc8847; }
+.status-declining .report-status { color: #98622d; }
+.report-periods { border-top: 1rpx solid rgba(125, 102, 64, 0.16); padding-top: 18rpx; margin: 22rpx 0 14rpx; font-size: 24rpx; color: #877252; line-height: 1.8; }
+.metric-card { border-left: 5rpx solid #ccb58c; }
+.metric-title { font-size: 28rpx; font-weight: 600; color: #67553a; }
+.metric-value { font-size: 48rpx; font-weight: 600; line-height: 1.3; margin: 12rpx 0; color: #825c2d; }
+.metric-detail { font-size: 25rpx; color: #817256; }
+.metric-change { font-size: 26rpx; margin-top: 16rpx; color: #8a785a; }
+.tone-good { border-left-color: #8d9b69; }
+.tone-good .metric-change { color: #69814f; }
+.tone-warn { border-left-color: #c3975c; }
+.tone-warn .metric-change { color: #a57336; }
+.tone-muted { border-left-color: #d0c4ac; }
+.tone-muted .metric-value { font-size: 34rpx; color: #9b8b71; }
+.metric-source { font-size: 22rpx; color: #a49275; border-top: 1rpx solid #efe7d7; padding-top: 14rpx; margin-top: 18rpx; }
+.metric-formula { color: #8b7653; font-size: 23rpx; line-height: 1.8; margin-top: 12rpx; }
+.wellbeing-value { font-size: 40rpx; }
+.study-chart { display: flex; justify-content: space-between; gap: 8rpx; margin: 26rpx 0 20rpx; }
+.study-day { flex: 1; min-width: 0; text-align: center; }
+.study-value { font-size: 21rpx; color: #9a8057; height: 38rpx; white-space: nowrap; }
+.study-track { height: 172rpx; display: flex; align-items: flex-end; justify-content: center; border-bottom: 1rpx solid #dfd2bc; }
+.study-bar { width: 38rpx; max-width: 80%; border-radius: 6rpx 6rpx 0 0; background: #b29460; }
+.study-zero { min-height: 3rpx; background: #786444; }
+.study-missing { width: 26rpx; height: 4rpx; border-top: 2rpx dashed #cec0a5; margin-bottom: 2rpx; }
+.study-date { font-size: 20rpx; color: #9b896b; margin-top: 12rpx; white-space: nowrap; }
+.report-coverage { margin: 28rpx 0 14rpx; }
+.coverage-count { font-size: 25rpx; color: #896d3f; }
+.coverage-track { height: 10rpx; border-radius: 8rpx; background: #ece4d4; margin: 14rpx 0 18rpx; overflow: hidden; }
+.coverage-fill { height: 100%; border-radius: 8rpx; background: #ac9464; }
+.advice-row { display: flex; gap: 18rpx; padding: 18rpx 0; border-bottom: 1rpx solid #eae1ce; }
+.advice-index { font-size: 23rpx; font-weight: 600; width: 38rpx; height: 38rpx; line-height: 38rpx; text-align: center; flex-shrink: 0; border-radius: 50%; background: #f0e5cf; color: #a0824d; }
+.advice-content { flex: 1; color: #7f6c4e; font-size: 26rpx; }
+.method-toggle { display: flex; justify-content: space-between; align-items: center; gap: 18rpx; padding: 0; margin: 0 0 12rpx; background: transparent; min-height: 88rpx; line-height: 1.6; text-align: left; border-radius: 0; font-size: 27rpx; }
+.method-toggle::after { border: 0; }
+.method-toggle .small { flex-shrink: 0; }
+.method-item { padding-top: 18rpx; margin-top: 18rpx; border-top: 1rpx solid #e9dfcb; }
+.method-title { font-size: 25rpx; font-weight: 600; color: #7f6946; margin-bottom: 6rpx; }

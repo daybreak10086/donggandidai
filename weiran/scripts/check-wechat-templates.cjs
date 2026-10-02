@@ -8,9 +8,15 @@ if (!compilerDir) { console.error('请传入微信开发者工具的 wcc-exec �
 const root = path.resolve(__dirname, '../miniprogram')
 const app = JSON.parse(fs.readFileSync(path.join(root, 'app.json'), 'utf8'))
 const ext = process.platform === 'win32' ? '.exe' : ''
+function stylesIn(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+    const file = path.join(dir, entry.name)
+    return entry.isDirectory() ? stylesIn(file) : entry.name.endsWith('.wxss') ? [path.relative(root, file).split(path.sep).join('/')] : []
+  })
+}
 const tasks = [
   ['wcc', ['-d', ...app.pages.map(p => p + '.wxml')]],
-  ['wcsc', ['-lc', 'app.wxss', ...app.pages.map(p => p + '.wxss')]]
+  ['wcsc', ['-lc', ...stylesIn(root)]]
 ]
 for (const [name, args] of tasks) {
   const result = spawnSync(path.join(compilerDir, name + ext), args, { cwd: root, encoding: 'utf8', windowsHide: true, maxBuffer: 10 * 1024 * 1024 })

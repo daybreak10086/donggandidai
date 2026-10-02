@@ -65,6 +65,19 @@
     </view>
   </view>
 
+  <view class="card growth-card">
+    <view class="between">
+      <view class="section-title">从关注到行动</view>
+      <view class="small">模拟 {{growth.today}}</view>
+    </view>
+    <view class="growth-intro">{{growth.planCount ? '还有 ' + growth.activeTasks + ' 项待办，按自己的节奏继续。' : '把想改善的事，变成这一周的小计划。'}}</view>
+    <view class="growth-links">
+      <button class="growth-link" bindtap="goPlan"><text class="growth-link-title">一周计划</text><text class="small">{{growth.planCount ? '已完成 ' + growth.completedTasks + ' 项' : '开始第一步'}}</text></button>
+      <button class="growth-link" bindtap="goCheckIn"><text class="growth-link-title">每日记录</text><text class="small">{{growth.recordedToday ? '查看今日记录' : '记录今天'}}</text></button>
+      <button class="growth-link" bindtap="goWeeklyReport"><text class="growth-link-title">成长周报</text><text class="small">{{growth.reportStatusLabel}}</text></button>
+    </view>
+  </view>
+
   <view wx:if="{{healthVisible}}" class="card">
     <view class="between">
       <view class="section-title">身体健康</view>

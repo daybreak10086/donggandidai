@@ -1,0 +1,14 @@
+@import "../../styles/growth.wxss";
+.date-hint { float: right; color: #9c8766; font-size: 24rpx; }
+.record-field { margin-bottom: 28rpx; padding-bottom: 22rpx; border-bottom: 1rpx solid #ece3d3; }
+.learning-field { padding: 22rpx; margin-left: -4rpx; margin-right: -4rpx; border-left: 5rpx solid #b8894b; border-bottom: 0; border-radius: 12rpx; background: #f6efdf; }
+.record-field .growth-helper { margin-top: 10rpx; }
+.field-source { font-size: 22rpx; color: #a18d6c; margin-top: 8rpx; }
+.record-meta { font-size: 23rpx; color: #9d8b6f; margin-bottom: 20rpx; }
+.delete-record { width: 100%; margin-top: 10rpx; color: #a2765c; }
+.history-row { background: transparent; padding: 24rpx 0; margin: 0; border-bottom: 1rpx solid #ece3d3; border-radius: 0; text-align: left; line-height: 1.65; }
+.history-row:last-child { border: 0; padding-bottom: 0; }
+.history-row::after { border: 0; }
+.history-date { font-size: 27rpx; font-weight: 600; color: #665036; }
+.history-origin { font-size: 22rpx; color: #a18a68; }
+.history-values { display: flex; flex-wrap: wrap; gap: 8rpx 20rpx; margin-top: 10rpx; color: #847255; font-size: 24rpx; }

@@ -1,0 +1,33 @@
+<view class="page growth-page">
+  <view class="growth-heading"><view class="growth-kicker">未然 · 记录</view><view class="growth-title serif">每日记录</view><view class="growth-lead">记录实际发生的事，方便回顾。每项都可以留空，0 表示确实没有。</view></view>
+  <view class="growth-clock"><view><view class="growth-clock-date">模拟日期 {{today}}</view><view class="growth-clock-note">推进日期不会自动改变成绩或填入记录</view></view><button class="growth-clock-btn" bindtap="advanceDay">推进一天</button></view>
+
+  <view class="card">
+    <view class="growth-section-top"><view class="section-title">{{hasRecord ? '查看与修改记录' : '写一条新记录'}}</view><view wx:if="{{dirty}}" class="badge badge-warn">未保存</view></view>
+    <view class="field"><view class="field-label">记录日期</view><picker mode="date" value="{{selectedDate}}" start="{{earliestDate}}" end="{{today}}" bindchange="onDateChange"><view class="picker-box">{{selectedDate}} <text class="date-hint">选择日期 ›</text></view></picker></view>
+    <view class="record-field learning-field">
+      <view class="field-label">自主学习时长</view>
+      <view class="growth-field-suffix"><input class="input" type="number" maxlength="4" placeholder="可不填，例如 60" value="{{form.learningMinutes}}" data-field="learningMinutes" bindinput="onFieldInput" /><text class="small">分钟</text></view>
+      <view class="growth-helper">课堂外主动学习的时间，0–1440 分钟。时长不直接代表学习效果。</view><view wx:if="{{sources.learningMinutes}}" class="field-source">当前来源：{{sources.learningMinutes}}</view>
+    </view>
+    <block wx:if="{{showHealth}}">
+      <view class="record-field"><view class="field-label">运动时长</view><view class="growth-field-suffix"><input class="input" type="number" maxlength="4" placeholder="可不填，没有运动填 0" value="{{form.exerciseMinutes}}" data-field="exerciseMinutes" bindinput="onFieldInput" /><text class="small">分钟</text></view><view class="growth-helper">0–1440 分钟，按当天实际情况记录。</view><view wx:if="{{sources.exerciseMinutes}}" class="field-source">当前来源：{{sources.exerciseMinutes}}</view></view>
+      <view class="record-field"><view class="field-label">睡眠时长</view><view class="growth-field-suffix"><input class="input" type="digit" maxlength="5" placeholder="可不填，例如 7.5" value="{{form.sleepHours}}" data-field="sleepHours" bindinput="onFieldInput" /><text class="small">小时</text></view><view class="growth-helper">0–24 小时，按醒来的日期记录昨晚睡眠。</view><view wx:if="{{sources.sleepHours}}" class="field-source">当前来源：{{sources.sleepHours}}</view></view>
+    </block>
+    <view class="record-field" wx:if="{{showMental}}"><view class="field-label">今日压力自评</view><view class="growth-field-suffix"><input class="input" type="number" maxlength="2" placeholder="可不填，0–20 的整数" value="{{form.pressureScore}}" data-field="pressureScore" bindinput="onFieldInput" /><text class="small">/ 20</text></view><view class="growth-helper">0 表示没有压力，20 表示压力非常大。用于回顾自己的变化，不是心理诊断，与画像问卷分开记录。</view><view wx:if="{{sources.pressureScore}}" class="field-source">当前来源：{{sources.pressureScore}}</view></view>
+    <view wx:if="{{hasRecord}}" class="record-meta">{{recordOrigin}} · 第 {{revision}} 版。修改同一天会更新原记录。</view>
+    <button class="btn btn-primary" loading="{{saving}}" disabled="{{saving}}" bindtap="saveRecord">{{hasRecord ? '保存修改' : '保存记录'}}</button>
+    <button wx:if="{{hasRecord}}" class="growth-text-btn delete-record" bindtap="deleteRecord">删除当天记录</button>
+  </view>
+
+  <view class="card">
+    <view class="section-title">近 14 天的记录</view><view class="growth-helper">点击日期可查看和修改。未填写的数据不按 0 计算。</view>
+    <view wx:if="{{history.length == 0}}" class="growth-empty"><view class="growth-empty-title">还没有记录</view><view>从今天开始即可，不需要补齐过去。</view></view>
+    <button class="history-row" wx:for="{{history}}" wx:key="date" data-date="{{item.date}}" bindtap="selectHistory">
+      <view class="between"><view class="history-date">{{item.date}}</view><view class="history-origin">{{item.originText}} ›</view></view>
+      <view class="history-values"><text>学习 {{item.learningText}}</text><text wx:if="{{showHealth}}">运动 {{item.exerciseText}}</text><text wx:if="{{showHealth}}">睡眠 {{item.sleepText}}</text><text wx:if="{{showMental}}">压力 {{item.pressureText}}</text></view>
+    </button>
+  </view>
+  <view class="growth-footnote">记录保存在当前学生的本地账号下，用于个人复盘，不会自动改变成绩或学业预警值。</view>
+  <view class="growth-link-row"><button class="btn btn-ghost" bindtap="goPlan">一周改善计划</button><button class="btn btn-ghost" bindtap="goReport">查看成长周报</button></view>
+</view>

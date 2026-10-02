@@ -1,0 +1,15 @@
+@import "../../styles/growth.wxss";
+.plan-draft { border-top: 6rpx solid #bd9255; }
+.draft-task { margin: 18rpx 0; padding: 20rpx; border: 1rpx solid #e8dec9; border-radius: 14rpx; background: #faf6ed; }
+.draft-task .field-label { margin: 0; }
+.draft-deadline { min-height: 88rpx; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10rpx; padding-top: 16rpx; font-size: 24rpx; color: #947f5f; }
+.add-task { width: 100%; border: 1rpx dashed #ccbb9b; border-radius: 12rpx; margin-bottom: 20rpx; }
+.plan-task { border-top: 1rpx solid #eae0cf; padding: 26rpx 0 4rpx; margin-top: 24rpx; }
+.task-title { flex: 1; min-width: 0; font-size: 28rpx; font-weight: 600; color: #55472f; word-break: break-all; }
+.plan-task .badge { flex-shrink: 0; }
+.task-canceled { color: #a2957e; text-decoration: line-through; }
+.task-buttons { display: flex; gap: 12rpx; flex-wrap: wrap; margin-top: 20rpx; }
+.postpone-form { background: #f4edde; padding: 2rpx 20rpx 22rpx; border-radius: 14rpx; margin-top: 18rpx; }
+.postpone-reason { margin-top: 18rpx; min-height: 140rpx; }
+.task-log { border-left: 3rpx solid #dfcfb3; padding-left: 18rpx; margin-top: 22rpx; color: #98876b; font-size: 23rpx; line-height: 1.8; }
+.task-log-item + .task-log-item { margin-top: 12rpx; }

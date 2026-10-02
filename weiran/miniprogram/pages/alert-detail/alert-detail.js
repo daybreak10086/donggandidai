@@ -33,7 +33,10 @@ definePage({
       events: store.getAcademicEvents(sid), demoDate: status.asOf, status: status
     })
   },
-  onSelf: function () { this.record('自助处理', '学生选择自主调整学习计划') },
+  onSelf: function () {
+    this.record('自助处理', '学生选择自助处理，打开一周计划；确认后才创建计划')
+    wx.navigateTo({ url: '/pages/plan/plan?from=warning' })
+  },
   onHelp: function () { this.record('请求辅导员帮助', '学生主动请求帮助，生成本地辅导员待处理事件') },
   onIgnore: function () { this.record('忽略', '学生暂不处理，观察周期继续计时') },
   record: function (action, note) {

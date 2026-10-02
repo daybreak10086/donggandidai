@@ -1,9 +1,11 @@
 const definePage = require('../../utils/page')
 const store = require('../../utils/store')
+const growth = require('../../utils/growth-store')
 
 definePage({
   data: {
     student: {},
+    growth: {},
     demoStudents: [],
     demoStudentIndex: 0,
     hasAcademic: false,
@@ -57,6 +59,7 @@ definePage({
 
     this.setData({
       student: student,
+      growth: growth.getDashboardSummary(),
       demoStudents: store.getStudents().map(s => ({ id: s.id, name: s.name })),
       demoStudentIndex: store.getStudents().findIndex(s => s.id === sid),
       hasAcademic: !!w,
@@ -90,6 +93,9 @@ definePage({
     this.refresh()
   },
   goProfile: function () { wx.navigateTo({ url: '/pages/profile/profile' }) },
+  goPlan: function () { wx.navigateTo({ url: '/pages/plan/plan' }) },
+  goCheckIn: function () { wx.navigateTo({ url: '/pages/check-in/check-in' }) },
+  goWeeklyReport: function () { wx.navigateTo({ url: '/pages/weekly-report/weekly-report' }) },
   goAlert: function () { wx.navigateTo({ url: '/pages/alert-detail/alert-detail' }) },
   goIp: function () { wx.navigateTo({ url: '/pages/ip/ip' }) }
 })

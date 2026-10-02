@@ -9,6 +9,13 @@
   </view>
 
   <view class="card">
+    <view class="section-title">我的成长</view>
+    <view class="link-row" bindtap="goPlan"><view>一周计划</view><view class="arrow">›</view></view>
+    <view class="link-row" bindtap="goCheckIn"><view>每日记录</view><view class="arrow">›</view></view>
+    <view class="link-row" bindtap="goWeeklyReport"><view>成长周报</view><view class="arrow">›</view></view>
+  </view>
+
+  <view class="card">
     <view class="section-title">更多</view>
     <view class="link-row" bindtap="goSettings"><view>设置中心</view><view class="arrow">›</view></view>
     <view class="link-row" bindtap="goFeedback"><view>数据反馈</view><view class="arrow">›</view></view>

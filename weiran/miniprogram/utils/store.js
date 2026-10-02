@@ -215,6 +215,16 @@ function evaluateAcademic(studentId) {
 }
 function getAcademicEvents(studentId) { return copy(getAcademicState(studentId).events) }
 function getCounselorEvents(studentId) { return getAcademicEvents(studentId).filter(e => e.recipient === 'counselor') }
+// 共用演示时钟。推进日期不伪造新的成绩、预警样本或自主记录。
+function advanceDemoDate(days) {
+  if (!Number.isInteger(days) || days < 1 || days > 30) throw new Error('每次可推进 1–30 天')
+  const sid = studentIdOrThrow()
+  const state = getAcademicState(sid)
+  state.asOf = academicRules.addDays(state.asOf, days)
+  saveAcademicState(sid, state)
+  evaluateAcademic(sid)
+  return state.asOf
+}
 function advanceAcademicDemo(improve) {
   const sid = studentIdOrThrow()
   const state = getAcademicState(sid)
@@ -295,6 +305,6 @@ module.exports = {
   getAccountInfo, updateAccountInfo, login, warningLevelLabel, warningLevelClass,
   enqueueNotification, syncNotifications, getMessages, markMessageRead, getRecommendations,
   getAcademicWarning, getAcademicStatus, getAcademicEscalation, evaluateAcademic,
-  getAcademicEvents, getCounselorEvents, advanceAcademicDemo, resetAcademicDemo,
+  getAcademicEvents, getCounselorEvents, advanceAcademicDemo, resetAcademicDemo, advanceDemoDate,
   getFeedbacks, addFeedback, updateFeedbackStatus, getAlertActions, addAlertAction, formatTime
 }

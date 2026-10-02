@@ -81,3 +81,10 @@
 }
 
 .tag-row { margin-top: 8rpx; }
+.growth-card .section-title { margin-bottom: 0; }
+.growth-intro { color: #766b5b; font-size: 26rpx; line-height: 1.7; margin: 16rpx 0 20rpx; }
+.growth-links { display: flex; justify-content: space-between; }
+.growth-link { width: 32%; padding: 20rpx 4rpx; margin: 0; background: #f4eddf; border-radius: 14rpx; line-height: 1.6; }
+.growth-link::after { border: none; }
+.growth-link text { display: block; }
+.growth-link-title { color: #674821; font-size: 27rpx; font-weight: 600; }
